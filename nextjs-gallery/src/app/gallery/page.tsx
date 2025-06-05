@@ -14,10 +14,8 @@ const fetchPhotos = async() => {
   return data
 }
 
-
 const page = async () => {
   const gallery: Photo[] = await fetchPhotos()
-  const newThumbnailUrl: string = "https://placehold.co/300x300"
 
   return (
     <div className="flex flex-col gap-10 items-center">
@@ -27,7 +25,7 @@ const page = async () => {
           {gallery.map(photo => (
             <li key={photo.id}>
               <Link href={`/gallery/${photo.id}`}>
-                <Image src={newThumbnailUrl} alt={`${photo.title}`} width={100} height={100}/>
+                <Image src={photo.thumbnailUrl} alt={`${photo.title}`} width={100} height={100}/>
               </Link>
             </li>
           ))}
